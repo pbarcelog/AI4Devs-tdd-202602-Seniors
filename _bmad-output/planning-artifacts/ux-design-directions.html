@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UX Design Directions - AI4Devs Seniors</title>
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #d1d5db;
+      --ok: #15803d;
+      --warn: #b45309;
+      --err: #b91c1c;
+      --info: #1d4ed8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.4;
+    }
+    header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    h1 { margin: 0 0 4px; font-size: 22px; }
+    .subtitle { color: var(--muted); font-size: 14px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 16px;
+      padding: 16px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    .card h2 {
+      font-size: 16px;
+      margin: 0;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+    }
+    .mockup { padding: 12px; }
+    .row { display: flex; gap: 8px; align-items: center; }
+    .col { display: flex; flex-direction: column; gap: 8px; }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+    }
+    .label { font-size: 12px; color: var(--muted); }
+    .field {
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 13px;
+      background: #fff;
+    }
+    .badge {
+      font-size: 11px;
+      border-radius: 999px;
+      padding: 2px 8px;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+    .ok { background: #dcfce7; color: #166534; border-color: #86efac; }
+    .warn { background: #ffedd5; color: #9a3412; border-color: #fdba74; }
+    .err { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
+    .btn {
+      border: 1px solid #1d4ed8;
+      background: #2563eb;
+      color: #fff;
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 6px;
+      cursor: default;
+    }
+    .btn.alt {
+      background: #fff;
+      color: #1d4ed8;
+      border-color: #93c5fd;
+    }
+    .small { font-size: 12px; color: var(--muted); }
+    .progress {
+      height: 6px;
+      background: #e5e7eb;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress > span {
+      display: block;
+      height: 100%;
+      background: #2563eb;
+    }
+    .list { margin: 0; padding-left: 18px; font-size: 12px; color: var(--muted); }
+    .split {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 8px;
+    }
+    .tight .field { padding: 6px 8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>UX Design Directions (3 Variants)</h1>
+    <div class="subtitle">Project: AI4Devs - CV extraction, review/edit, confirm/save. Balanced density, professional tone.</div>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>Direction A - Guided Step Flow</h2>
+      <div class="mockup col">
+        <div class="panel">
+          <div class="row" style="justify-content: space-between;">
+            <strong>Candidate Intake Wizard</strong>
+            <span class="small">Step 2 of 4</span>
+          </div>
+          <div class="progress" style="margin-top: 8px;"><span style="width: 50%"></span></div>
+        </div>
+        <div class="split">
+          <div class="panel col">
+            <div class="label">Extracted Profile Data</div>
+            <input class="field" value="Full name: Maria Perez" />
+            <input class="field" value="Email: maria.perez@email.com" />
+            <div class="row">
+              <input class="field" style="flex:1" value="Current role: Senior Developer" />
+              <span class="badge warn">Low confidence</span>
+            </div>
+            <input class="field" value="Last company: Globex" />
+          </div>
+          <div class="panel col">
+            <div class="label">Status & Guidance</div>
+            <span class="badge ok">14 fields validated</span>
+            <span class="badge warn">3 fields need review</span>
+            <span class="badge err">0 blocking errors</span>
+            <ul class="list">
+              <li>Review yellow fields before continue</li>
+              <li>Autosave enabled every 10 seconds</li>
+            </ul>
+          </div>
+        </div>
+        <div class="row" style="justify-content: flex-end;">
+          <button class="btn alt">Back</button>
+          <button class="btn">Continue</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Direction B - Table Verification Workspace</h2>
+      <div class="mockup col tight">
+        <div class="panel row" style="justify-content: space-between;">
+          <strong>Extraction Review Workspace</strong>
+          <span class="small">Inline editing enabled</span>
+        </div>
+        <div class="panel">
+          <div class="row small" style="font-weight:600;">
+            <div style="flex:1">Field</div>
+            <div style="flex:1">Extracted value</div>
+            <div style="width:92px">Confidence</div>
+            <div style="width:90px">Action</div>
+          </div>
+          <div class="row" style="margin-top:6px;">
+            <div style="flex:1" class="small">Name</div>
+            <input class="field" style="flex:1" value="Maria Perez" />
+            <span class="badge ok" style="width:92px; text-align:center;">High</span>
+            <button class="btn alt" style="width:90px;">Lock</button>
+          </div>
+          <div class="row" style="margin-top:6px;">
+            <div style="flex:1" class="small">Current Role</div>
+            <input class="field" style="flex:1" value="Senior Devloper" />
+            <span class="badge warn" style="width:92px; text-align:center;">Low</span>
+            <button class="btn alt" style="width:90px;">Edit</button>
+          </div>
+          <div class="row" style="margin-top:6px;">
+            <div style="flex:1" class="small">Phone</div>
+            <input class="field" style="flex:1" value="+34 600 112 233" />
+            <span class="badge ok" style="width:92px; text-align:center;">High</span>
+            <button class="btn alt" style="width:90px;">Lock</button>
+          </div>
+        </div>
+        <div class="panel row" style="justify-content: space-between;">
+          <span class="small">Saved draft 20s ago. No data loss risk.</span>
+          <div class="row">
+            <button class="btn alt">Retry failed checks</button>
+            <button class="btn">Confirm & Save</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Direction C - Dual Pane Confidence Review</h2>
+      <div class="mockup col">
+        <div class="split">
+          <div class="panel col">
+            <div class="label">Source CV Preview</div>
+            <div style="height: 170px; border:1px dashed #cbd5e1; border-radius:6px; display:flex; align-items:center; justify-content:center;" class="small">
+              CV page preview / text highlight
+            </div>
+            <span class="small">Selected text is linked to field mapping</span>
+          </div>
+          <div class="panel col">
+            <div class="label">Structured Candidate Data</div>
+            <div class="row">
+              <input class="field" style="flex:1" value="Position Match Score: 82%" />
+              <span class="badge ok">Reliable</span>
+            </div>
+            <div class="row">
+              <input class="field" style="flex:1" value="Skills: React, Node.js, Prisma" />
+              <span class="badge ok">High</span>
+            </div>
+            <div class="row">
+              <input class="field" style="flex:1" value="Role: Software Engineer II" />
+              <span class="badge warn">Review</span>
+            </div>
+            <div class="panel" style="background:#f8fafc;">
+              <div class="small"><strong>System Notice:</strong> Server error occurred during autosave at 10:32. Your local changes are preserved. Retry save when ready.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="justify-content: flex-end;">
+          <button class="btn alt">Save Draft</button>
+          <button class="btn">Retry Save</button>
+          <button class="btn">Finalize Candidate</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
